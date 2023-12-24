@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -90,4 +91,10 @@ public class CategoryServiceImpl implements CategoryService {
 
         categoryMapper.insert(category);
     }
+
+    public List<Category> list(Integer type) {
+        return categoryMapper.list(type);
+    }
+
+
 }
