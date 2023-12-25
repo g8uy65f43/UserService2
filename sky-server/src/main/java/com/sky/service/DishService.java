@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.dto.DishDTO;
+import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Category;
 import com.sky.result.PageResult;
 import lombok.extern.slf4j.Slf4j;
@@ -15,4 +16,6 @@ public interface DishService {
 
     @Transient
     public void saveWithFlavor(DishDTO dishDTO);
+
+    PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
 }
