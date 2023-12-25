@@ -6,6 +6,8 @@ import com.sky.entity.Category;
 import com.sky.result.PageResult;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface CategoryService {
 
 
@@ -18,4 +20,6 @@ public interface CategoryService {
     void deleteById(Long id);
 
     void save(Category category);
+
+    List<Category> list(Integer type);
 }

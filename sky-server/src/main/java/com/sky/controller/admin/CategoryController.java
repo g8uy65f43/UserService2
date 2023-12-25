@@ -13,6 +13,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/admin/category")
@@ -56,5 +58,11 @@ public class CategoryController {
         log.info("删除分类：{}", id);
         categoryService.deleteById(id);
         return Result.success();
+    }
+    @GetMapping("/list")
+    @ApiOperation("根据类型查询分类")
+    public Result<List<Category>> list(Integer type){
+        List<Category> list = categoryService.list(type);
+        return Result.success(list);
     }
 }
