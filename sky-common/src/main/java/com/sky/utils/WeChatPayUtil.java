@@ -2,7 +2,7 @@ package com.sky.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.sky.properties.WeChatProperties;
+import com.sky.properties.LiffProperties;
 import com.wechat.pay.contrib.apache.httpclient.WechatPayHttpClientBuilder;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
 import org.apache.commons.lang.RandomStringUtils;
@@ -42,7 +42,7 @@ public class WeChatPayUtil {
     public static final String REFUNDS = "https://api.mch.weixin.qq.com/v3/refund/domestic/refunds";
 
     @Autowired
-    private WeChatProperties weChatProperties;
+    private LiffProperties weChatProperties;
 
     /**
      * 获取调用微信接口的客户端工具对象

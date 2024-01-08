@@ -17,6 +17,7 @@ spring:
     host: ${sky.redis.host}
     database: ${sky.redis.database}
 
+
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
@@ -41,3 +42,11 @@ sky:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    user-secret-key: taintaintaintaintaintaintaintaintaintaintainfasvssad
+    user-ttl: 720000
+    user-token-name: authentication
+
+  liff:
+    appid: ${sky.liff.appid}
+    url: ${sky.liff.url}
+    end-point-url: ${sky.liff.end-point-url}

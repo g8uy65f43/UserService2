@@ -1,6 +1,7 @@
 package com.sky.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -23,6 +24,7 @@ import java.util.Map;
 /**
  * Http工具类
  */
+@Slf4j
 public class HttpClientUtil {
 
     static final  int TIMEOUT_MSEC = 5 * 1000;
@@ -51,7 +53,43 @@ public class HttpClientUtil {
 
             //创建GET请求
             HttpGet httpGet = new HttpGet(uri);
+            log.info(String.valueOf(httpGet));
+            //发送请求
+            response = httpClient.execute(httpGet);
 
+            //判断响应状态
+            if(response.getStatusLine().getStatusCode() == 200){
+                result = EntityUtils.toString(response.getEntity(),"UTF-8");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                response.close();
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
+    }
+    public static String myDoGet(String url,Map<String,String> paramMap){
+        // 创建Httpclient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+
+        String result = "";
+        CloseableHttpResponse response = null;
+
+        try{
+            URIBuilder builder = new URIBuilder(url);
+
+            URI uri = builder.build();
+
+            //创建GET请求
+            HttpGet httpGet = new HttpGet(uri);
+            httpGet.setHeader("Authorization",paramMap.get("js_code"));
+            log.info(String.valueOf(httpGet));
             //发送请求
             response = httpClient.execute(httpGet);
 

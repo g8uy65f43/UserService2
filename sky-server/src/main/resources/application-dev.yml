@@ -10,3 +10,7 @@ sky:
     port: 6379
     host: localhost
     database: 0
+  liff:
+    end-point-url: https://fancy-torrone-30a781.netlify.app
+    appid: 2002542651-30wDwKnW
+    url: https://liff.line.me/2002542651-30wDwKnW
