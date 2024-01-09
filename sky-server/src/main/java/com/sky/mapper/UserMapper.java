@@ -12,4 +12,7 @@ public interface UserMapper {
     @Select("select * from user where openid = #{openid}")
     User getByLiffId(String openid);
     void insert(User user);
+
+    void updateOs(String openid,String phone);
+
 }

@@ -4,8 +4,14 @@
 <mapper namespace="com.sky.mapper.UserMapper">
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into user (openid,name,avatar,  create_time)  values (#{openid},#{name},#{avatar}, #{createTime}
+        insert into user (openid,phome,name,avatar,create_time)  values (#{openid},#{phone},#{name},#{avatar}, #{createTime}
                      )
     </insert>
-
+    <update id="updateOs">
+        update user
+        <set>
+            <if test="phone != null">phone = #{phone},</if>
+        </set>
+        where openid = #{openid}
+    </update>
 </mapper>

@@ -12,5 +12,6 @@ public class UserLoginDTO implements Serializable {
 
     private String openId;
     private String accessToken;
+    private String os;
 
 }

@@ -69,9 +69,11 @@ public class UserServiceImpl implements UserService {
         }
         User user = userMapper.getByLiffId(liffId);
         if (user ==null){
-            user = User.builder().openid(liffId).name(dataJsonObject.getString("displayName")).avatar(dataJsonObject.getString("pictureUrl")).createTime(LocalDateTime.now()).build();
+            user = User.builder().phone(userLoginDTO.getOs()).openid(liffId).name(dataJsonObject.getString("displayName")).avatar(dataJsonObject.getString("pictureUrl")).createTime(LocalDateTime.now()).build();
             userMapper.insert(user);
         }
+        log.info("@@{}{}",liffId,userLoginDTO.getOs());
+        userMapper.updateOs(liffId,userLoginDTO.getOs());
 
         return user;
     }
